@@ -1,66 +1,96 @@
-📚 LiterAlura - Catálogo de Libros
-Proyecto backend desarrollado con Spring Boot para la gestión y consulta de un catálogo literario.
-El sistema consume datos de la API externa Gutendex para buscar información sobre libros y autores, permitiendo su persistencia y consulta local.
+Literatura Catálogo - Challenge LiterAlura
+📝 Descripción del Proyecto
+Literatura Catálogo es una aplicación de consola robusta diseñada para la gestión y exploración de datos literarios. El sistema permite interactuar con la API externa de Gutendex para buscar libros, persistir la información en una base de datos relacional y realizar consultas estadísticas avanzadas sobre autores y obras.
 
-📌 Funcionalidades
-Búsqueda de libros por título: Consulta la API de Gutendex y registra el libro en la base de datos.
+Este proyecto fue desarrollado como parte del Challenge LiterAlura de Alura Latam, enfocándose en el consumo de APIs REST, el modelado de datos con JPA/Hibernate y la manipulación de flujos de datos con Java Streams.
 
-Listado de libros registrados: Visualiza todos los libros almacenados localmente.
+🚀 Funcionalidades Principales
+Búsqueda de Libros por Título: Consulta directa a la API Gutendex y persistencia automática en la BD.
 
-Listado de autores registrados: Muestra la información de los autores de los libros guardados.
+Listado de Libros Registrados: Visualización de todas las obras almacenadas localmente.
 
-Filtro de autores por año: Lista autores que estaban vivos en un año determinado.
+Gestión de Autores: Listado de autores registrados con su respectiva información biográfica.
 
-Filtro por idioma: Permite listar libros según el lenguaje (español, inglés, francés, etc.).
+Filtro por Época: Búsqueda de autores que estuvieron vivos en un año determinado.
 
-🚀 Tecnologías utilizadas
-Java 17+
+Filtro por Idioma: Consulta de libros según su sigla de idioma (es, en, fr, pt).
 
-Spring Boot
+Estadísticas de Datos: Generación de métricas (máximos, mínimos y promedios) basadas en las descargas de los libros.
 
-Spring Data JPA
+Top 10: Visualización de los libros más populares descargados.
 
-MySQL (o PostgreSQL según tu configuración)
+🛠️ Tecnologías Utilizadas
+Lenguaje: Java 17
 
-Jackson/Gson (para el parseo de JSON)
+Framework: Spring Boot 3.x
 
-Maven
+Gestor de Dependencias: Maven
 
-⚙️ Configuración del proyecto
-Antes de ejecutar la aplicación, asegúrate de configurar las variables de entorno para la conexión a la base de datos en tu archivo application.properties:
+Persistencia: Spring Data JPA
+
+Base de Datos: PostgreSQL
+
+API Externa: Gutendex API
+
+Mapeo JSON: Jackson (ObjectMapper)
+
+⚙️ Configuración del Entorno
+Antes de comenzar, asegúrate de tener instalado:
+
+JDK 17 o superior.
+
+Maven (opcional si usas el wrapper ./mvnw).
+
+PostgreSQL en ejecución.
+
+Variables de Entorno
+Debes configurar las siguientes variables en tu entorno o editar el archivo src/main/resources/application.properties:
 
 Properties
-spring.datasource.url=jdbc:mysql://localhost:3306/literalura_db
-spring.datasource.username=tu_usuario
-spring.datasource.password=tu_password
-🗄️ Base de datos
-La aplicación utiliza persistencia de datos para evitar consultas repetitivas a la API.
-
-Crea una base de datos llamada: literalura_db
-
-Hibernate se encargará de crear las tablas automáticamente al iniciar la aplicación (ddl-auto=update).
-
-▶️ Cómo ejecutar el proyecto
-Desde la raíz del proyecto:
-
-En Windows:
+DB_HOST=localhost
+DB_NAME=literatura_db
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+📥 Instalación y Ejecución
+Clonar el repositorio:
 
 Bash
-mvnw spring-boot:run
-O usando Maven instalado:
+git clone https://github.com/Thiago-BF/literatura-catalogo.git
+cd literatura-catalogo
+Configurar la Base de Datos:
+Crea una base de datos en PostgreSQL llamada literatura_db.
+
+Compilar el proyecto:
+
+Bash
+mvn clean install
+Ejecutar la aplicación:
 
 Bash
 mvn spring-boot:run
-La aplicación es una aplicación de consola, por lo que al iniciar verás un menú interactivo en la terminal para navegar por las opciones.
+📂 Estructura del Proyecto
+Plaintext
+src/main/java/com/thiagobf/literatura
+├── principal          # Clase con la lógica del menú interactivo
+├── model              # Entidades JPA y DTOs (Records)
+├── repository         # Interfaces para acceso a datos (Spring Data)
+├── service            # Lógica de consumo de API y conversión de datos
+└── LiteraturaApplication.java # Clase principal de Spring Boot
+📊 Ejemplo de Uso
+Al iniciar la aplicación, se desplegará un menú interactivo en la consola:
 
-📂 Estructura del proyecto
-com.thiago.forohub.main → Clase principal con el menú interactivo.
-
-com.thiago.forohub.model → Entidades (Libro, Autor) y clases de mapeo (Records para DTOs).
-
-com.thiago.forohub.repository → Interfaces para la persistencia de datos.
-
-com.thiago.forohub.service → Lógica para el consumo de la API y conversión de datos.
-
-👨‍💻 Autor
-Thiago Beber Feil Programmer.
+Plaintext
+***************************************************
+            LITERALURA - CATÁLOGO
+***************************************************
+1 - Buscar libro por título
+2 - Listar libros registrados
+3 - Listar autores registrados
+4 - Listar autores vivos en un determinado año
+5 - Listar libros por idioma
+0 - Salir
+***************************************************
+Elija una opción:
+✒️ Autor
+Thiago Beber Feil
+Programmer.
